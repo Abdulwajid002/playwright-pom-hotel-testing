@@ -42,19 +42,24 @@ adactin-hotel-playwright-automation/
 │   ├── LoginPage.js
 │   ├── SearchHotelPage.js
 │   ├── SelectHotelPage.js
-│   ├── BookHotelPage.js
+│   ├── BookPage.js
 │   └── ConfirmationPage.js
+│   └── BasePage.js
 │
 ├── tests/
 │   └── booking.spec.js
+│   └── e2e.spec.js
+│   └── login.spec.js
+│   └── search.spec.js
 │
 ├── fixtures/
-│
+│   └── testSetup.js
 ├── utilities/
-│
+│   └── screenshot.js
 ├── test-data/
-│
-├── screenshots/
+│   └── bookingData.json
+│   └── loginData.json
+│   └── searchData.json
 │
 ├── playwright.config.js
 │
@@ -235,7 +240,7 @@ QA Automation | Playwright | JavaScript | API Testing | Performance Testing | SQ
 
 GitHub: https://github.com/Abdulwajid002
 
-LinkedIn: *(Add your LinkedIn profile here)*
+LinkedIn: www.linkedin.com/in/abdulwajid1947
 
 ---
 
