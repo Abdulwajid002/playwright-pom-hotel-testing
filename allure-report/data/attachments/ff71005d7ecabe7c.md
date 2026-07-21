@@ -1,0 +1,189 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: login.spec.js >> Login >> TC-03: Logout redirects back to the login page
+- Location: tests\login.spec.js:38:3
+
+# Error details
+
+```
+Error: expect(locator).toHaveText(expected) failed
+
+Locator: locator('.welcome_menu').first()
+Expected: "Welcome to Adactin Group of Hotels"
+Timeout: 5000ms
+Error: element(s) not found
+
+Call log:
+  - Expect "toHaveText" with timeout 5000ms
+  - waiting for locator('.welcome_menu').first()
+
+```
+
+```yaml
+- table:
+  - rowgroup:
+    - 'row "AdactIn Group Adactin Group: Hotel Reservation System"':
+      - cell "AdactIn Group":
+        - img "AdactIn Group"
+      - 'cell "Adactin Group: Hotel Reservation System"':
+        - 'img "Adactin Group: Hotel Reservation System"'
+    - row:
+      - cell
+- table:
+  - rowgroup:
+    - 'row "Adactin Launches The Adactin Hotel App! Hotel Image 3 The best Free learning platform for Software Testing Now available to download for free on IOS and Android. Existing User Login - Build 1 Username Password Forgot Password? Invalid Login details or Your Password might have expired. Click here to reset your password Login New User Register Here Important Note: Hotel Application has 2 builds: Build 1 Has been developed with known defects. Thus, functional test cases and automation scripts will fail on this build. Build 2 Known defects have been fixed. Thus, functional test cases and automation test scripts should pass when executed on this build. Go to Build 2 For any queries/issues please email: info@adactin.com"':
+      - cell "Adactin Launches The Adactin Hotel App! Hotel Image 3 The best Free learning platform for Software Testing Now available to download for free on IOS and Android.":
+        - paragraph: Adactin Launches The Adactin Hotel App!
+        - table:
+          - rowgroup:
+            - row "Hotel Image 3":
+              - cell "Hotel Image 3":
+                - img "Hotel Image 3"
+            - row "The best Free learning platform for Software Testing Now available to download for free on IOS and Android.":
+              - cell "The best Free learning platform for Software Testing Now available to download for free on IOS and Android."
+        - table:
+          - rowgroup:
+            - row:
+              - cell:
+                - link:
+                  - /url: https://testflight.apple.com/join/Ai3nVPMD
+                  - img
+              - cell:
+                - link:
+                  - /url: https://play.google.com/store/apps/details?id=com.adactin.education.hotelbooking
+                  - img
+      - 'cell "Existing User Login - Build 1 Username Password Forgot Password? Invalid Login details or Your Password might have expired. Click here to reset your password Login New User Register Here Important Note: Hotel Application has 2 builds: Build 1 Has been developed with known defects. Thus, functional test cases and automation scripts will fail on this build. Build 2 Known defects have been fixed. Thus, functional test cases and automation test scripts should pass when executed on this build. Go to Build 2 For any queries/issues please email: info@adactin.com"':
+        - table:
+          - rowgroup:
+            - row "Existing User Login - Build 1":
+              - cell "Existing User Login - Build 1"
+            - row "Username":
+              - cell "Username"
+              - cell:
+                - textbox
+            - row "Password":
+              - cell "Password"
+              - cell:
+                - textbox
+            - row "Forgot Password?":
+              - cell
+              - cell "Forgot Password?":
+                - link "Forgot Password?":
+                  - /url: ForgotPassword.php
+            - row "Invalid Login details or Your Password might have expired. Click here to reset your password":
+              - cell
+              - cell "Invalid Login details or Your Password might have expired. Click here to reset your password":
+                - text: Invalid Login details or Your Password might have expired.
+                - link "Click here":
+                  - /url: http://adactinhotelapp.com/ForgotPassword.php
+                - text: to reset your password
+            - row "Login":
+              - cell
+              - cell "Login":
+                - button "Login"
+            - row "New User Register Here":
+              - cell "New User Register Here":
+                - link "New User Register Here":
+                  - /url: Register.php
+        - table:
+          - rowgroup:
+            - row "Important Note:":
+              - cell "Important Note:"
+            - 'row "Hotel Application has 2 builds: Build 1 Has been developed with known defects. Thus, functional test cases and automation scripts will fail on this build. Build 2 Known defects have been fixed. Thus, functional test cases and automation test scripts should pass when executed on this build. Go to Build 2"':
+              - 'cell "Hotel Application has 2 builds: Build 1 Has been developed with known defects. Thus, functional test cases and automation scripts will fail on this build. Build 2 Known defects have been fixed. Thus, functional test cases and automation test scripts should pass when executed on this build. Go to Build 2"':
+                - text: "Hotel Application has 2 builds:"
+                - list:
+                  - listitem:
+                    - strong: Build 1
+                    - text: Has been developed with known defects. Thus, functional test cases and automation scripts will fail on this build.
+                  - listitem:
+                    - strong: Build 2
+                    - text: Known defects have been fixed. Thus, functional test cases and automation test scripts should pass when executed on this build.
+                    - link "Go to Build 2":
+                      - /url: ../HotelAppBuild2
+                      - strong: Go to Build 2
+            - 'row "For any queries/issues please email: info@adactin.com"':
+              - 'cell "For any queries/issues please email: info@adactin.com"':
+                - text: "For any queries/issues please email:"
+                - link "info@adactin.com":
+                  - /url: mailto:info@adactin.com
+- table:
+  - rowgroup:
+    - row:
+      - cell
+    - row "© 2026 - Adactin.com. All Rights Reserved. Adactin Group Pty. Ltd.":
+      - cell "© 2026 - Adactin.com. All Rights Reserved. Adactin Group Pty. Ltd.":
+        - text: © 2026 -
+        - link "Adactin.com":
+          - /url: http://www.adactin.com
+        - text: . All Rights Reserved. Adactin Group Pty. Ltd.
+```
+
+# Test source
+
+```ts
+  1  | import { test, expect } from '../fixtures/testSetup.js';
+  2  | import loginData from '../testdata/loginData.json' assert { type: 'json' };
+  3  | import LoginPage from '../pages/LoginPage.js';
+  4  | import { attachStepScreenshot } from '../utilities/screenshot.js';
+  5  | 
+  6  | test.describe('Login', () => {
+  7  |   // TC-01
+  8  |   test('TC-01: Login with valid credentials shows welcome message', async ({ page }) => {
+  9  |     const loginPage = new LoginPage(page);
+  10 |     const data = loginData.validUsers[0];
+  11 | 
+  12 |     await test.step('Enter credential and login', async () => {
+  13 |       await loginPage.login(data.username, data.password);
+  14 |     });
+  15 | 
+  16 |     await test.step('Verify Welcome Message on Landing page', async () => {
+  17 |       await expect(loginPage.message.first()).toHaveText(data.ExpectedMsg);
+  18 |       await attachStepScreenshot(page, '05 - After welcome message verification');
+  19 |     });
+  20 |   });
+  21 | 
+  22 |   // TC-02
+  23 |   test('TC-02: Login with invalid credentials shows error message', async ({ page }) => {
+  24 |     const loginPage = new LoginPage(page);
+  25 |     const data = loginData.invalidUsers[0];
+  26 | 
+  27 |     await test.step('Enter invalid credential and attempt login', async () => {
+  28 |       await loginPage.login(data.username, data.password);
+  29 |     });
+  30 | 
+  31 |     await test.step('Verify error message is displayed', async () => {
+  32 |       await expect(page.locator('body')).toContainText(data.ExpectedError);
+  33 |       await attachStepScreenshot(page, '05 - After invalid login error verification');
+  34 |     });
+  35 |   });
+  36 | 
+  37 |   // TC-03
+  38 |   test('TC-03: Logout redirects back to the login page', async ({ page }) => {
+  39 |     const loginPage = new LoginPage(page);
+  40 |     const data = loginData.validUsers[0];
+  41 | 
+  42 |     await test.step('Login with valid user', async () => {
+  43 |       await loginPage.login(data.username, data.password);
+> 44 |       await expect(loginPage.message.first()).toHaveText(data.ExpectedMsg);
+     |                                               ^ Error: expect(locator).toHaveText(expected) failed
+  45 |     });
+  46 | 
+  47 |     await test.step('Logout', async () => {
+  48 |       await loginPage.logout();
+  49 |     });
+  50 | 
+  51 |     await test.step('Verify login form is visible again', async () => {
+  52 |       await expect(loginPage.username).toBeVisible();
+  53 |       await attachStepScreenshot(page, 'After logout verification');
+  54 |     });
+  55 |   });
+  56 | });
+  57 | 
+```

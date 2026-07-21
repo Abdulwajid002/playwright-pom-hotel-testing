@@ -1,0 +1,18 @@
+{
+  "validUsers": [
+    {
+      "username": "wajid123",
+      "password": "wajid123",
+      "ExpectedMsg": "Welcome to Adactin Group of Hotels"
+    }
+  ],
+  "invalidUsers": [
+    {
+      "username": "invalidUser_9999",
+      "password": "wrongPassword_9999",
+      "ExpectedError": "Your username and password doesn't match"
+    }
+  ]
+}
+
+

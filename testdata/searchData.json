@@ -1,0 +1,20 @@
+{
+  "singleRoomSearch": {
+    "location": "Sydney",
+    "hotel": "Hotel Sunshine",
+    "roomType": "Standard",
+    "noOfRooms": 1
+  },
+  "multiRoomSearch": {
+    "location": "Sydney",
+    "hotel": "Hotel Sunshine",
+    "roomType": "Deluxe",
+    "noOfRooms": 3
+  },
+  "invalidCombinationSearch": {
+    "location": "London",
+    "hotel": "Hotel Sunshine",
+    "roomType": "Standard",
+    "noOfRooms": 1
+  }
+}
